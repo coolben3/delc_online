@@ -238,15 +238,11 @@
         orario: this.orario.value
       };
 
-      const response = await 
-        fetch("https://biglietto-backend.onrender.com/invia", {
+     const response = await fetch("https://biglietto-backend.onrender.com/invia", {
   method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
+  headers: { "Content-Type": "application/json" },
   body: JSON.stringify(data)
 });
-
 
       loader.style.display = 'none';
 
