@@ -238,7 +238,8 @@
         orario: this.orario.value
       };
 
-      const response = await fetch("https://backend-biglietto.coolben3.repl.co/invia", {
+      const response = await 
+        fetch("https://biglietto-backend.onrender.com/invia", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
