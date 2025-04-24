@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Prenotazione Tratta</title>
 
-  <!-- Font Cal Sans -->
-  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet" />
+  <!-- Font Raleway -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet" />
 
   <style>
     body {
       background-color: #cceeff;
-      font-family: 'Cal Sans', sans-serif;
+      font-family: 'Raleway', sans-serif;
       padding: 20px;
       margin: 0;
     }
@@ -118,7 +118,7 @@
 <body>
 
   <div class="logo-container">
-    <img src="assets/ChatGPT%20Image%20Apr%2024,%202025,%2008_54_14%20PM.png" alt="Logo Benkamar">
+    <img src="assets/logo.png" alt="Logo Benkamar">
   </div>
 
   <h1>Prenotazione Tratta</h1>
@@ -126,10 +126,6 @@
   <form id="form">
     <label>Nome e Cognome:
       <input type="text" name="nome_cognome" required />
-    </label>
-
-    <label>Email (per invio PDF):
-      <input type="email" name="email" placeholder="facoltativo" />
     </label>
 
     <label>Tratta:
@@ -172,6 +168,11 @@
       <select name="orario" id="orario" required>
         <option value="">-- Seleziona un orario --</option>
       </select>
+    </label>
+
+    <!-- Email ora è in fondo -->
+    <label>Email (per invio PDF):
+      <input type="email" name="email" placeholder="facoltativo" />
     </label>
 
     <button type="submit">
