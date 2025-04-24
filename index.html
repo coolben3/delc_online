@@ -218,42 +218,47 @@
       });
     });
 
-    document.getElementById('form').addEventListener('submit', async function (e) {
-      e.preventDefault();
+   document.getElementById('form').addEventListener('submit', async function (e) {
+  e.preventDefault();
 
-      loader.style.display = 'inline-block';
-      success.textContent = '';
+  const data = {
+    nome_cognome: this.nome_cognome.value,
+    tratta: this.tratta.value,
+    giorno: this.giorno.value,
+    mese: this.mese.value,
+    adulti: this.adulti.value,
+    bambini: this.bambini.value,
+    neonati: this.neonati.value,
+    moto: this.moto.value,
+    auto: this.auto.value,
+    orario: this.orario.value,
+    email: this.email.value
+  };
 
-      const data = {
-        nome_cognome: this.nome_cognome.value,
-        email: this.email.value,
-        tratta: this.tratta.value,
-        giorno: this.giorno.value,
-        mese: this.mese.value,
-        adulti: this.adulti.value,
-        bambini: this.bambini.value,
-        neonati: this.neonati.value,
-        moto: this.moto.value,
-        auto: this.auto.value,
-        orario: this.orario.value
-      };
+  console.log("Dati da inviare:", data); // 👈 Aggiunto per debug
 
-     const response = await fetch("https://biglietto-backend.onrender.com/invia", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(data)
+  try {
+    const response = await fetch("https://biglietto-backend.onrender.com/invia", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    if (response.ok) {
+      console.log("✅ Risposta OK dal server");
+      success.textContent = "✅ Biglietto generato con successo!";
+      this.reset();
+    } else {
+      console.error("❌ Errore risposta:", await response.text());
+      success.textContent = "❌ Errore nella generazione del biglietto.";
+    }
+
+  } catch (err) {
+    console.error("❌ Errore nella fetch:", err);
+    success.textContent = "❌ Errore di connessione al server.";
+  }
 });
 
-      loader.style.display = 'none';
-
-      if (response.ok) {
-        success.textContent = "✅ Biglietto generato con successo!";
-        this.reset();
-      } else {
-        success.textContent = "❌ Errore durante la generazione del biglietto.";
-        success.style.color = "red";
-      }
-    });
   </script>
 </body>
 </html>
